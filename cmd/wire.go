@@ -6,11 +6,11 @@ package main
 import (
 	"github.com/google/wire"
 
-	"mi/internal/app"
-	"mi/internal/app/api"
-	"mi/internal/app/repo"
-	"mi/internal/app/router"
-	"mi/internal/app/service"
+	"gin-cli/internal/app"
+	"gin-cli/internal/app/api"
+	"gin-cli/internal/app/repo"
+	"gin-cli/internal/app/router"
+	"gin-cli/internal/app/service"
 )
 
 func initApp() (*app.App, func(), error) {
