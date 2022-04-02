@@ -30,6 +30,6 @@ Thumbs.db
 
 # Develop tools
 .vscode/
-.idea/
+.idea/*
 *.swp
 
