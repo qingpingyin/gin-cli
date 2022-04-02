@@ -8,12 +8,13 @@ import (
 
 	"gin-cli/internal/app"
 	"gin-cli/internal/app/api"
+	"gin-cli/internal/app/config"
 	"gin-cli/internal/app/repo"
 	"gin-cli/internal/app/router"
 	"gin-cli/internal/app/service"
 )
 
-func initApp() (*app.App, func(), error) {
+func initApp(cfg *config.Config) (*app.App, func(), error) {
 	panic(wire.Build(
 		repo.ProviderSet,
 		service.ProviderSet,

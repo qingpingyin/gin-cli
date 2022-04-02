@@ -8,6 +8,7 @@ package main
 import (
 	"gin-cli/internal/app"
 	"gin-cli/internal/app/api"
+	"gin-cli/internal/app/config"
 	"gin-cli/internal/app/repo"
 	"gin-cli/internal/app/router"
 	"gin-cli/internal/app/service"
@@ -15,7 +16,7 @@ import (
 
 // Injectors from wire.go:
 
-func initApp() (*app.App, func(), error) {
+func initApp(cfg *config.Config) (*app.App, func(), error) {
 	userRepo := &repo.UserRepo{}
 	userService := &service.UserService{
 		UserRepo: userRepo,

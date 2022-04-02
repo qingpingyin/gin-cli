@@ -6,6 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 
 	"gin-cli/internal/app"
+	"gin-cli/internal/app/config"
 )
 
 var (
@@ -15,13 +16,18 @@ var (
 )
 
 func init() {
-	flag.StringVar(&conf, "conf", "../internal/configs", "config path, eg: -conf config.yaml")
+	flag.StringVar(&conf, "conf", "../configs/config.yaml", "config path, eg: -conf config.yaml")
 }
 
 func main() {
 	flag.Parse()
 
-	app, cleanup, err := initApp()
+	cfg,err := config.LoadConfig(conf)
+	if err != nil {
+		panic(err)
+	}
+
+	app, cleanup, err := initApp(cfg)
 	if err != nil {
 		panic(err)
 	}
