@@ -2,15 +2,15 @@ package repo
 
 import (
 	"github.com/google/wire"
+	"gorm.io/gorm"
 )
 
-var UserRepoProviderSet = wire.NewSet(wire.Struct(new(UserRepo),"*"))
+var UserRepoProviderSet = wire.NewSet(wire.Struct(new(UserRepo), "*"))
 
 type UserRepo struct {
-	// db *gorm.DB
+	db *gorm.DB
 }
 
-
-func (ur *UserRepo)GetUserInfo(){
+func (ur *UserRepo) GetUserInfo() {
 
 }

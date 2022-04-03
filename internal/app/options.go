@@ -3,6 +3,7 @@ package app
 import (
 	"context"
 	"fmt"
+	"gin-cli/internal/app/config"
 	"log"
 	"net/http"
 	"time"
@@ -40,18 +41,21 @@ func SetName(name string) Option {
 		o.name = name
 	}
 }
-func Init(ctx context.Context, engine *gin.Engine) (func(), error) {
+func Init(ctx context.Context, cfg *config.Config, engine *gin.Engine) (func(), error) {
 
-	httpServerCleanFunc := InitHTTPServer(ctx, engine)
+	fmt.Println("--------------")
+	config.PrintWithJSON(cfg)
+	fmt.Println("--------------")
+
+	httpServerCleanFunc := InitHTTPServer(ctx, cfg, engine)
 
 	return func() {
 		httpServerCleanFunc()
 	}, nil
 }
 
-
-func InitHTTPServer(ctx context.Context, handler http.Handler) func() {
-	addr := fmt.Sprintf("%s:%d", "127.0.0.1", 8088)
+func InitHTTPServer(ctx context.Context, cfg *config.Config, handler http.Handler) func() {
+	addr := fmt.Sprintf("%s:%d", cfg.System.Addr, cfg.System.Port)
 	srv := &http.Server{
 		Addr:         addr,
 		Handler:      handler,
@@ -61,7 +65,7 @@ func InitHTTPServer(ctx context.Context, handler http.Handler) func() {
 	}
 
 	go func() {
-		log.Printf("the server is running at %s ",addr)
+		log.Printf("the server is running at %s ", addr)
 
 		if err := srv.ListenAndServe(); err != nil && err != http.ErrServerClosed {
 			panic(err)

@@ -1,0 +1,25 @@
+jwt:
+  signing-key: 'qmPlus'
+  expires-time: 604800
+  buffer-time: 86400
+  issuer: 'qmPlus'
+
+mysql:
+  host: ''
+  port: 0
+  db-name: ''
+  username: ''
+  password: ''
+  parameters: 'charset=utf8mb4&parseTime=True&loc=Local&allowNativePasswords=true'
+
+system:
+  env: 'public'
+  addr: "127.0.0.1"
+  port: 8888
+  db-type: 'mysql'
+  is-debug: false
+  max-life-time: 7200
+  max-open-conns: 150
+  max-idle-conns: 50
+  table-prefix: 'go_mi_'
+  enable-auto-migrate: true

@@ -2,6 +2,7 @@ package app
 
 import (
 	"context"
+	"gin-cli/internal/app/config"
 	"os"
 	"os/signal"
 	"sync"
@@ -31,12 +32,12 @@ func New(opts ...Option) *App {
 	}
 }
 
-func (a *App) Run() error {
+func (a *App) Run(cfg *config.Config) error {
 	state := 1
 
 	sc := make(chan os.Signal, 1)
 	signal.Notify(sc, syscall.SIGHUP, syscall.SIGINT, syscall.SIGTERM, syscall.SIGQUIT)
-	cleanFunc, err := Init(a.ctx, a.opts.engine)
+	cleanFunc, err := Init(a.ctx, cfg, a.opts.engine)
 	if err != nil {
 		return err
 	}
