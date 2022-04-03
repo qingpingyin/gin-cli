@@ -2,7 +2,6 @@ package main
 
 import (
 	"flag"
-
 	"github.com/gin-gonic/gin"
 
 	"gin-cli/internal/app"
@@ -22,18 +21,17 @@ func init() {
 func main() {
 	flag.Parse()
 
-	cfg,err := config.LoadConfig(conf)
+	cfg, err := config.LoadConfig(conf)
 	if err != nil {
 		panic(err)
 	}
-
 	app, cleanup, err := initApp(cfg)
 	if err != nil {
 		panic(err)
 	}
 
 	defer cleanup()
-	if err = app.Run();err !=nil {
+	if err = app.Run(cfg); err != nil {
 		panic(err)
 	}
 }
