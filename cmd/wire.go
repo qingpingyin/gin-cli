@@ -16,6 +16,7 @@ import (
 
 func initApp(cfg *config.Config) (*app.App, func(), error) {
 	panic(wire.Build(
+		app.InitGorm,
 		repo.ProviderSet,
 		service.ProviderSet,
 		api.ProviderSet,
