@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"fmt"
 	"gin-cli/internal/app/config"
-	"gin-cli/internal/app/repo"
+	"gin-cli/internal/app/model"
 	"gorm.io/gorm"
 	"gorm.io/gorm/schema"
 	"strings"
@@ -24,7 +24,7 @@ func InitGorm(c *config.Config) (*gorm.DB, func(), error) {
 	cleanFunc := func() {}
 
 	if c.System.EnableAutoMigrate {
-		if err = repo.AutoMigrate(db); err != nil {
+		if err = model.AutoMigrate(db); err != nil {
 			return nil, cleanFunc, err
 		}
 	}

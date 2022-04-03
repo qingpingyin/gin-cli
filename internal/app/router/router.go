@@ -35,11 +35,17 @@ func (a *Router) RegisterAPI(app *gin.Engine) {
 	v1 := g.Group("/v1")
 	{
 		v1.GET("/health", func(c *gin.Context) {
-			c.JSON(http.StatusOK,gin.H{
-				"msg":"ok",
-				"status":200,
+			c.JSON(http.StatusOK, gin.H{
+				"msg":    "ok",
+				"status": 200,
 			})
 		})
+
+		user := v1.Group("/user")
+		{
+			user.POST("/login", a.UserAPI.Login)
+		}
+
 	}
 
 }

@@ -7,7 +7,7 @@ import (
 	"gin-cli/internal/app/service"
 )
 
-var UserAPIProviderSet = wire.NewSet(wire.Struct(new(UserAPI),"*"))
+var UserAPIProviderSet = wire.NewSet(wire.Struct(new(UserAPI), "*"))
 
 type UserAPI struct {
 	UserSrv *service.UserService
