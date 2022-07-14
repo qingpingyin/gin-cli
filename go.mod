@@ -6,7 +6,9 @@ require (
 	github.com/gin-gonic/gin v1.7.7
 	github.com/go-playground/validator/v10 v10.10.1 // indirect
 	github.com/go-sql-driver/mysql v1.6.0
+	github.com/golang-jwt/jwt/v4 v4.4.2 // indirect
 	github.com/google/wire v0.5.0
+	github.com/jinzhu/copier v0.3.5 // indirect
 	github.com/jinzhu/now v1.1.5 // indirect
 	github.com/magiconair/properties v1.8.6 // indirect
 	github.com/spf13/afero v1.8.2 // indirect

@@ -14,8 +14,9 @@ type UserAPI struct {
 }
 
 func (u *UserAPI) Login(c *gin.Context) {
+	//c.BindJSON()
 	// 登陆参数验证
 
 	// 登陆逻辑
-	u.UserSrv.Login()
+	//u.UserSrv.Login()
 }
