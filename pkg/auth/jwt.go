@@ -5,12 +5,6 @@ import (
 	"github.com/golang-jwt/jwt/v4"
 )
 
-const (
-	Bearer        = "Bearer"
-	BearerFormat  = "Bearer %s"
-	Authorization = "Authorization"
-)
-
 var (
 	TokenExpired     = errors.New("Token is expired")
 	TokenNotValidYet = errors.New("Token not active yet")
@@ -29,7 +23,7 @@ type BaseClaims struct {
 
 func NewJWt() *JWT {
 	return &JWT{
-		SignKey: []byte("xxxxxxx"),
+		SignKey: []byte(""),
 	}
 }
 
