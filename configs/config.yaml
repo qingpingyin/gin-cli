@@ -5,11 +5,11 @@ jwt:
   issuer: 'qmPlus'
 
 mysql:
-  host: ''
-  port: 0
-  db-name: ''
-  username: ''
-  password: ''
+  host: '39.108.235.46'
+  port: 3306
+  db-name: 'deephash'
+  username: 'staples'
+  password: 'staples'
   parameters: 'charset=utf8mb4&parseTime=True&loc=Local&allowNativePasswords=true'
   log-mode: ""
   log-zap: false
@@ -25,7 +25,7 @@ system:
   max-idle-conns: 50
   table-prefix: 'go_mi_'
   enable-auto-migrate: true
-  is-print-config : false
+  is-print-config: true
 
 zap:
   level: 'info'
@@ -40,5 +40,8 @@ zap:
 
 redis:
   db: 0
-  addr: '127.0.0.1:6379'
-  password: ''
+  addr: '101.132.127.139:6379'
+  password: 'hashdeep'
+
+casbin:
+  path: './configs/rbac_model.conf'
