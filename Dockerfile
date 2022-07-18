@@ -16,9 +16,9 @@ FROM alpine:latest
 
 WORKDIR /app
 # 需要文件COPY到容器内
-COPY --from =builder ./build/server   ./
-COPY --from =builder ./build/resource ./resource/
-COPY --from =builder ./build/configs  ./configs/
+COPY --from=builder /build/server   ./
+COPY --from=builder /build/resource ./resource/
+COPY --from=builder /build/configs  ./configs/
 
 # 映射端口
 EXPOSE 8888
