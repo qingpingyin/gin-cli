@@ -10,5 +10,5 @@ services:
     volumes:
       - ./resource:/app/resource
       - ./log:/app/log
-      - ./configs/config.yaml:/app/config/config.yaml
+      - ./configs/config.yaml:/app/configs/config.yaml
       - /var/run/docker.sock:/var/run/docker.sock
