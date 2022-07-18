@@ -6,7 +6,7 @@ services:
     restart: always
     privileged: true
     ports:
-      - 8081:8081
+      - 8888:8888
     volumes:
       - ./resource:/app/resource
       - ./log:/app/log

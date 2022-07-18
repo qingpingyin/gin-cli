@@ -16,8 +16,8 @@ mysql:
 
 system:
   env: 'public'
-  addr: "127.0.0.1"
-  port: 8081
+  addr: "0.0.0.0"
+  port: 8888
   db-type: 'mysql'
   is-debug: false
   max-life-time: 7200
