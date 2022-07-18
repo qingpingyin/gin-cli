@@ -12,8 +12,9 @@ WORKDIR /app
 # 需要文件COPY到容器内
 COPY ./configs /app/configs
 COPY ./resource /app/resource
+COPY ./server /app
 
 # 映射端口
-EXPOSE
+EXPOSE 8081
 
 CMD ["./server"]
