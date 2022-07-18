@@ -1,16 +1,10 @@
 package v1
 
-import "template/internal/app/api/v1/user"
-
-var (
-	FrontApiGroupApp    = new(FrontApiGroup)
-	MerchantApiGroupApp = new(MerchantApiGroup)
+import (
+	"github.com/google/wire"
+	"template/internal/app/api/v1/user"
 )
 
-type FrontApiGroup struct {
-	UserApiGroup user.FrontUserApiGroup
-}
-
-type MerchantApiGroup struct {
-	UserApiGroup user.MerchantUserApiGroup
-}
+var ProviderSet = wire.NewSet(
+	user.UserAPIProviderSet,
+)

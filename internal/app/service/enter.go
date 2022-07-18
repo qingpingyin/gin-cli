@@ -1,18 +1,10 @@
 package service
 
-import "template/internal/app/service/user"
-
-var (
-	FrontServiceGroupApp    = new(FrontServiceGroup)
-	MerchantServiceGroupApp = new(MerchantServiceGroup)
+import (
+	"github.com/google/wire"
+	"template/internal/app/service/user"
 )
 
-type (
-	FrontServiceGroup struct {
-		user.FrontUserService
-	}
-
-	MerchantServiceGroup struct {
-		user.MerchantUserService
-	}
+var ProviderSet = wire.NewSet(
+	user.UserServiceProviderSet,
 )

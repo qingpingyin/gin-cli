@@ -1,17 +1,16 @@
 package user
 
-import "template/internal/app/service"
-
-var (
-	frontUserService    = service.FrontServiceGroupApp.FrontUserService
-	merchantUserService = service.MerchantServiceGroupApp.MerchantUserService
+import (
+	"github.com/google/wire"
 )
 
-type (
-	FrontUserApiGroup struct {
-		FrontUserApi
-	}
-	MerchantUserApiGroup struct {
-		MerchantUserApi
-	}
+var UserAPIProviderSet = wire.NewSet(
+	wire.Struct(new(FrontUserApi), "*"),
+	wire.Struct(new(MerchantUserApi), "*"),
+	wire.Struct(new(UserApi), "*"),
 )
+
+type UserApi struct {
+	*FrontUserApi
+	*MerchantUserApi
+}

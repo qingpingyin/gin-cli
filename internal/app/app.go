@@ -3,7 +3,6 @@ package app
 import (
 	"context"
 	"fmt"
-	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
 	"os"
@@ -41,7 +40,7 @@ func (a *App) Run(cfg *config.Config) error {
 
 	sc := make(chan os.Signal, 1)
 	signal.Notify(sc, syscall.SIGHUP, syscall.SIGINT, syscall.SIGTERM, syscall.SIGQUIT)
-	cleanFunc, err := a.init(a.ctx, cfg, a.opts.engine)
+	cleanFunc, err := a.init(a.ctx, cfg)
 	if err != nil {
 		return err
 	}
@@ -66,7 +65,7 @@ EXIT:
 	return nil
 }
 
-func (a *App) init(ctx context.Context, cfg *config.Config, engine *gin.Engine) (func(), error) {
+func (a *App) init(ctx context.Context, cfg *config.Config) (func(), error) {
 
 	if cfg.System.IsPrintConfig {
 		fmt.Println("--------------")
@@ -74,7 +73,7 @@ func (a *App) init(ctx context.Context, cfg *config.Config, engine *gin.Engine) 
 		fmt.Println("--------------")
 	}
 
-	httpServerCleanFunc := a.initHTTPServer(ctx, cfg, engine)
+	httpServerCleanFunc := a.initHTTPServer(ctx, cfg, a.opts.engine)
 
 	return func() {
 		httpServerCleanFunc()

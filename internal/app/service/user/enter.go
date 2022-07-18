@@ -1,11 +1,8 @@
 package user
 
-type (
-	FrontServiceGroup struct {
-		FrontUserService
-	}
+import "github.com/google/wire"
 
-	MerchantServiceGroup struct {
-		MerchantUserService
-	}
+var UserServiceProviderSet = wire.NewSet(
+	wire.Struct(new(FrontUserService), "*"),
+	wire.Struct(new(MerchantUserService), "*"),
 )

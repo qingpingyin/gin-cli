@@ -1,4 +1,4 @@
-package initialize
+package gormx
 
 import (
 	"database/sql"
@@ -8,7 +8,6 @@ import (
 	"gorm.io/gorm"
 	"strings"
 	"template/internal/app/config"
-	"template/internal/app/initialize/internal"
 	"time"
 )
 
@@ -57,7 +56,7 @@ func newInstance(c *config.Config) (*gorm.DB, error) {
 		dialector = mysql.Open(c.Mysql.DNS())
 	}
 
-	db, err := gorm.Open(dialector, internal.Gorm.Config())
+	db, err := gorm.Open(dialector, Gorm.Config(c))
 	if err != nil {
 		return nil, err
 	}

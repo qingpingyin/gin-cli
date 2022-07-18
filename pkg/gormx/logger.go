@@ -1,9 +1,8 @@
-package internal
+package gormx
 
 import (
-	"fmt"
 	"gorm.io/gorm/logger"
-	"template/internal/app/global"
+	"template/internal/app/config"
 )
 
 type writer struct {
@@ -18,16 +17,16 @@ func NewWriter(w logger.Writer) *writer {
 
 // Printf 格式化打印日志
 // Author [SliverHorn](https://github.com/SliverHorn)
-func (w *writer) Printf(message string, data ...interface{}) {
+func (w *writer) Printf(c *config.Config, message string, data ...interface{}) {
 	var logZap bool
-	switch global.HXSD_CONFIG.System.DbType {
+	switch c.System.DbType {
 	case "mysql":
-		logZap = global.HXSD_CONFIG.Mysql.LogZap
+		logZap = c.Mysql.LogZap
 	case "pgsql":
 		//logZap = global.GVA_CONFIG.Pgsql.LogZap
 	}
 	if logZap {
-		global.HXSD_LOG.Info(fmt.Sprintf(message+"\n", data...))
+		//..Info(fmt.Sprintf(message+"\n", data...))
 	} else {
 		w.Writer.Printf(message, data...)
 	}
