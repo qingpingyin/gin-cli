@@ -44,4 +44,4 @@ redis:
   password: 'hashdeep'
 
 casbin:
-  path: './configs/rbac_model.conf'
+  path: ''

@@ -3,9 +3,9 @@ package casbin
 import (
 	"github.com/casbin/casbin/v2"
 	gormadapter "github.com/casbin/gorm-adapter/v3"
-	"github.com/spf13/viper"
 	"gorm.io/gorm"
 	"os"
+	"template/internal/app/global"
 )
 
 var (
@@ -24,10 +24,10 @@ func InitCasbin(db *gorm.DB) (*casbin.Enforcer, error) {
 		return nil, err
 	}
 
-	casbinPath := viper.GetString("casbin.path")
+	casbinPath := global.HXSD_CONFIG.Casbin.Path
 	if casbinPath == "" {
 		wd, _ := os.Getwd()
-		casbinPath = wd + "/conf/rbac_model.conf"
+		casbinPath = wd + "/configs/rbac_model.conf"
 	}
 	Enforcer, err = casbin.NewEnforcer(casbinPath, adapter)
 	if err != nil {

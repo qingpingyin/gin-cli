@@ -38,7 +38,6 @@ func newInstance(c *config.Config) (*gorm.DB, error) {
 
 	switch strings.ToLower(c.System.DbType) {
 	case "mysql":
-		fmt.Println(c.Mysql.DNS())
 		// create database if not exists
 		cfg, err := mysqlDriver.ParseDSN(c.Mysql.DNS())
 		if err != nil {
