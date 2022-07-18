@@ -1,0 +1,13 @@
+version: '3.1'
+services:
+  hxsd:
+    image: 'hxsd:v1.0.0'
+    container_name: 'hxsd:v1.0.0'
+    restart: always
+    privileged: true
+    ports:
+      - 18888:18888
+    volumes:
+      - ./resource:/app/resource
+      - ./config/config.yaml:/app/config/config.yaml
+      - /var/run/docker.sock:/var/run/docker.sock

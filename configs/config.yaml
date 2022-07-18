@@ -37,3 +37,8 @@ zap:
   max-age: 30 # 默认日志留存默认以天为单位
   show-line: true
   log-in-console: true
+
+redis:
+  db: 0
+  addr: '127.0.0.1:6379'
+  password: ''

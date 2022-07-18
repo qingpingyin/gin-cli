@@ -14,6 +14,7 @@ type Config struct {
 	System `json:"system" mapstructure:"system" yaml:"system"`
 	Mysql  `json:"mysql" mapstructure:"mysql" yaml:"mysql"`
 	Zap    `json:"zap" mapstructure:"zap" yaml:"zap"`
+	Redis  `json:"redis" mapstructure:"redis" yaml:"redis"`
 }
 
 func LoadConfig(cfgFile string) (*Config, error) {

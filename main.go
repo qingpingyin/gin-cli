@@ -30,7 +30,13 @@ func main() {
 	global.HXSD_CONFIG = *cfg
 	global.HXSD_LOG = logx.Zap()
 	zap.ReplaceGlobals(global.HXSD_LOG)
-
+	db, cancel, err := initialize.InitGorm(cfg)
+	if err != nil {
+		panic(err)
+	}
+	cancel()
+	global.HXSD_DB = db
+	initialize.Redis(cfg)
 	err = app.New(
 		app.SetVersion(version),
 		app.SetName(name),
